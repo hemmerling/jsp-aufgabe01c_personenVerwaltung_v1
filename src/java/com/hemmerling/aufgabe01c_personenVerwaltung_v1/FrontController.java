@@ -47,26 +47,21 @@ public class FrontController extends HttpServlet {
     private static final String NACHNAME = "nachname";
     // private /* static */ final String NACHNAME = getInitParameter("nachname");
 
-    private boolean listeAnlegen(List<String[]> items, HttpSession session) {
-        boolean result = items == null;
-        if (result) {
-            items = new LinkedList<String[]>();
-            session.setAttribute(ITEMS, items);
-        }
-        return result;
-    }
-
     private String personAnlegen(List<String[]> items, HttpServletRequest request) {
         String vorname = request.getParameter(VORNAME);
         String nachname = request.getParameter(NACHNAME);
         String sresult = STARTSEITE;
-        boolean isPersonAnlegen = (vorname != null && nachname != null && 
-                                   !vorname.trim().isEmpty() && !nachname.trim().isEmpty());
+        boolean isPersonAnlegen = (vorname != null && nachname != null
+                && !vorname.trim().isEmpty() && !nachname.trim().isEmpty());
         if (isPersonAnlegen) {
             items.add(new String[]{vorname, nachname});
             sresult = ANLEGEN;
         } else {
-            sresult = AUFLISTEN;
+            if (vorname != null && nachname != null) {
+                sresult = ANLEGEN;
+            } else {
+                sresult = AUFLISTEN;
+            }
         }
         return sresult;
     }
@@ -91,37 +86,19 @@ public class FrontController extends HttpServlet {
 
         String[] parameterValues;
         boolean result;
-        String nextPage = "index.jsp";
+        String nextPage = STARTSEITE;
         HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
 
         List<String[]> items = (List<String[]>) session.getAttribute(ITEMS);
-        //listeAnlegen(items, session);
-        
-        result = items == null;
-        if (result) {
+
+        if (items == null) {
             items = new LinkedList<String[]>();
             session.setAttribute(ITEMS, items);
         }
-        
-        String vorname = request.getParameter(VORNAME);
-        String nachname = request.getParameter(NACHNAME);
-        String sresult = STARTSEITE;
-        boolean isPersonAnlegen = (vorname != null && nachname != null && 
-                                   !vorname.trim().isEmpty() && !nachname.trim().isEmpty());
-        if (isPersonAnlegen) {
-            items.add(new String[]{vorname, nachname});
-            sresult = ANLEGEN;
-        } else {
-            sresult = AUFLISTEN;
-        }
-        nextPage = sresult;
-        
-//        nextPage = personAnlegen(items, request);
 
-//        if (vorname != null && nachname != null ) {
-//            items.add(new String[]{vorname, nachname});
-//        }
+        nextPage = personAnlegen(items, request);
+
         // an View weitergeben
         forward(nextPage, request, response);
 

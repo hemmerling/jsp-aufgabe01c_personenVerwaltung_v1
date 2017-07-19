@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Guestbook [Web Components ( aufgabe01b_formular )]</title>
+        <title>Person anlegen [Web Components ( aufgabe01b_formular )]</title>
     </head>
     <body>
         <jsp:include page = "header.jsp"/>
@@ -33,6 +33,6 @@
             <input type="reset" value="Reset" />
             <input type="submit" value="Submit" />
         </form>
-
+        <jsp:include page = "footer.jsp" />
     </body>
 </html>

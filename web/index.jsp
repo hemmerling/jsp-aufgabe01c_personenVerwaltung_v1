@@ -14,5 +14,6 @@
     <body>
         <jsp:include page = "header.jsp"/>
         <h1>Web Components ( aufgabe01c_personenVerwaltung_v1_menu ) - Startseite</h1>
-     </body>
+        <jsp:include page = "footer.jsp" />
+    </body>
 </html>

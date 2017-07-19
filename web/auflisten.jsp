@@ -21,9 +21,9 @@
         %>
         <% } else { %>
         <ol>
-        <% for (String[] item : items) {%>
+            <% for (String[] item : items) {%>
             <li><%= item[0]%> <%= item[1]%></li>
-        <% } %>
+                <% } %>
         </ol>
         <% }%>
         <jsp:include page = "footer.jsp" />
