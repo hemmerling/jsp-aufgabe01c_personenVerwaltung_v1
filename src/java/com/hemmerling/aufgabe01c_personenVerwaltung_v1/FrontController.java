@@ -102,8 +102,6 @@ public class FrontController extends HttpServlet {
         // an View weitergeben
         forward(nextPage, request, response);
 
-//        RequestDispatcher requestDispatcher = request.getRequestDispatcher("auflisten.jsp");
-//        requestDispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
