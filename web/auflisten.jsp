@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Personenliste [Web Components ( aufgabe01c_personenVerwaltung_v1_menu )]</title>
+        <title>Personenliste [Web Components ( aufgabe01c_personenVerwaltung_v1 )]</title>
     </head>
     <body>
         <jsp:include page = "header.jsp" />
